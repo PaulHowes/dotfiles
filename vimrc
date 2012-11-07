@@ -67,6 +67,19 @@ filetype plugin on        " Enable file type-specific plugins.
 syntax on                 " Enables syntax highlighting.
 
 "
+" I like to have a marker at column 80 in order to break my lines up into
+" readable (non-wrapping) lengths.  Vim has two options that can work together
+" to accomplish this:  textwidth and colorcolumn.  The textwidth will force
+" Vim to split and wrap lines longer than whateve the limit is set to.  You
+" can always go back and join lines together making them long again though.
+" The colorcolumn options puts a light red marker in the specified column so
+" long lines can be visually identified.  Multiple markers may be placed for
+" visual confirmation of various line lenghts.
+"
+:set textwidth=78
+:set colorcolumn=80,100,132
+
+"
 " Handy keyboard macro that allows F5 to indent an entire file.
 "
 map <silent> <F5> mmgg=G'm
