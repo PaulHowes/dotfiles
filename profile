@@ -5,13 +5,8 @@ then
   export PATH=${LOCAL_BIN}:${PATH}
 fi
 
-# Enables access to Node.js modules globally installed with NPM
-NODE_PATH=/usr/local/lib/node_modules
-if [ -e ${NODE_PATH} ]
-then
-  export NODE_PATH
-fi
-
+# Pulls in local configuration items.  Use this file to customize the
+# environment to taste.
 LOCAL_PROFILE=${HOME}/.profile_local
 if [ -e ${LOCAL_PROFILE} ]
 then
