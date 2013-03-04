@@ -1,3 +1,4 @@
+alias convert2qt="~/.dotfiles/ffmpeg/convert2qt"
 # Converts an audio file to ALAC format.
 function alac()
 {
@@ -39,6 +40,20 @@ function mkvdts2m4v()
   -codec:v copy \
   -codec:a:0 libfaac -ar:a:0 48k -ab:a:0 160k -ac:a:0 2 \
   -codec:a:1 ac3 -ar:a:1 48k -ab:a:1 448k -ac:a:1 6 \
+  "${name}.m4v"
+}
+
+function movaac2m4v()
+{
+  basename=`basename "${1}"`
+  name=${basename%\.*}
+  ffmpeg -i "$1" \
+  -map_chapters -1 \
+  -map 0:v:0 -map 0:a:0 \
+  -metadata:s:0 language=eng \
+  -metadata:s:1 language=eng \
+  -codec:v copy \
+  -codec:a copy \
   "${name}.m4v"
 }
 
@@ -86,7 +101,7 @@ function avi2qt()
   -map 0:v:0 -map 0:a:0 \
   -metadata:s:0 language=eng -metadata:s:1 language=eng \
   -codec:v libx264 -preset:v slow -profile:v main -crf:v 18 -threads:v 0 \
-  -codec:a libfaac -ar:a 48k -ab:a 160k -ac:a 2 \
+  -codec:a libfaac -ar:a 48k -ab:a 160k -ac:a 2 -vol:a 768 \
   "${name}.m4v"
 }
 
@@ -122,10 +137,12 @@ function mov2m4v()
   name=${basename%\.*}
   ffmpeg -i "$1" \
   -map_chapters -1 \
-  -map 0:v:0 -map 0:a:0 \
+  -map 0:v:0 -map 0:a:0 -map 0:a:0 \
   -metadata:s:0 language=eng \
   -metadata:s:1 language=eng \
+  -metadata:s:2 language=eng \
   -codec:v copy \
-  -codec:a copy \
+  -codec:a:0 copy \
+  -codec:a:1 copy \
   "${name}.m4v"
 }
