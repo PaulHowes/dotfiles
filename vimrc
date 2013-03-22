@@ -4,8 +4,7 @@ set nocompatible          " Force into Vim mode, not vi.
 " their own directories under ~/.vim/bundle and Pathogen will add them to the
 " Vim search path.  This makes bundle management easy, but must occur early in
 " the .vimrc file.
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 "
 " Tab and indent settings.
@@ -76,7 +75,7 @@ syntax on                 " Enables syntax highlighting.
 " long lines can be visually identified.  Multiple markers may be placed for
 " visual confirmation of various line lenghts.
 "
-:set textwidth=78
+":set textwidth=78
 :set colorcolumn=80,100,132
 
 "
