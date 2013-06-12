@@ -1,4 +1,3 @@
-alias convert2qt="~/.dotfiles/ffmpeg/convert2qt"
 # Converts an audio file to ALAC format.
 function alac()
 {

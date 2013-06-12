@@ -76,7 +76,7 @@ syntax on                 " Enables syntax highlighting.
 " visual confirmation of various line lenghts.
 "
 ":set textwidth=78
-:set colorcolumn=80,100,132
+":set colorcolumn=80,100,132
 
 "
 " Handy keyboard macro that allows F5 to indent an entire file.
