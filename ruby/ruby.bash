@@ -5,3 +5,7 @@ then
   export PATH=${RUBY_BIN}:${PATH}
 fi
 
+# Adds the user's local gem 'bin' directory to the path.
+if which ruby >/dev/null && which gem >/dev/null; then
+  PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
